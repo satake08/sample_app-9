@@ -1,0 +1,18 @@
+<h1>投稿一覧</h1>
+
+<!--%= @lists.each do |list| %>-->
+<% @lists.each do |list| %><!--@listsの前に＝がない-->
+
+  <p>タイトル</p>
+  <!--<span>%= list.title, %></span>↓に変更-->
+  <span>
+    <%= link_to list.title, "/lists/#{list.id}" %>
+  </span>
+
+  <p>画像</p>
+  <% if list.image.attached? %><!--エラー回避-->
+    <%= image_tag list.image, size: "200x200" %><!--表示される画像-->
+  <% else %><!--エラー回避-->
+    <%= image_tag 'no_image', size: "200x200" %><!--エラー回避(表示されないときの代わりのもの)-->
+  <% end %>
+<% end %>
